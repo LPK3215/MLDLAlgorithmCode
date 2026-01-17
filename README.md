@@ -56,35 +56,95 @@
 
 ## 环境配置
 
-### 创建虚拟环境
+### 📌 虚拟环境统一说明
 
-```powershell
+**本项目所有子项目共享统一的虚拟环境：`mldl_algo311`**
+
+**重要：每次使用本项目或任何子项目前，必须先激活虚拟环境！**
+
+### 🔧 环境配置步骤
+
+#### 1. 创建虚拟环境（首次使用）
+
+```bash
+# 创建 Python 3.11 虚拟环境
 conda create -n mldl_algo311 python=3.11 -y
+
+# 激活虚拟环境
 conda activate mldl_algo311
 ```
 
-### 安装依赖
+#### 2. 激活虚拟环境（每次使用前）
 
-```powershell
+```bash
+conda activate mldl_algo311
+```
+
+#### 3. 安装全局依赖（可选）
+
+```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install numpy scipy pandas matplotlib scikit-learn tqdm pyyaml
+```
+
+### 🔍 验证环境
+
+```bash
+# 查看当前激活的环境
+conda info --envs
+
+# 检查 Python 版本
+python --version  # 应该显示 Python 3.11.x
+
+# 查看已安装的包
+pip list
+```
+
+### ⚠️ 常见问题
+
+**Q1: 忘记激活虚拟环境会怎样？**
+
+如果未激活虚拟环境直接运行子项目，可能会遇到：
+- `ModuleNotFoundError`：缺少依赖包
+- 版本冲突：使用了系统全局 Python 环境
+- 运行失败：依赖包版本不匹配
+
+**解决方法：** 始终先执行 `conda activate mldl_algo311`
+
+**Q2: 如何退出虚拟环境？**
+
+```bash
+conda deactivate
+```
+
+**Q3: 如何删除虚拟环境？**
+
+```bash
+conda remove -n mldl_algo311 --all
 ```
 
 ## 项目结构
 
 ```
 MLDLAlgorithmCode/
+├── README.md                     # 项目说明（包含环境配置）
 ├── docs/                         # 项目文档
 │   ├── 1-核心算法.md             # 算法清单
 │   ├── 2-提示词-给出算法名称生成对应代码.md  # 工作流程
-│   └── 3-虚拟环境搭建.md         # 环境配置
-├── [算法名称]/                   # 各算法子项目（待创建）
-│   ├── ALGO_SPEC.md             # 算法规格书
-│   ├── IMPLEMENTATION_DESIGN.md # 实现设计文档
+│   └── 3-虚拟环境搭建.md         # 环境配置详细说明
+├── ml_knn/                       # KNN 算法子项目 ✅
+│   ├── docs/                    # 子项目文档
+│   │   ├── PLAN.md              # 项目计划
+│   │   ├── ALGO_SPEC.md         # 算法规格书
+│   │   ├── IMPLEMENTATION_DESIGN.md  # 实现设计文档
+│   │   └── QUICK_START.md       # 快速开始
+│   ├── README.md                # 子项目说明
+│   ├── requirements.txt         # 子项目依赖
+│   ├── main.py                  # 主入口
 │   ├── src/                     # 源代码
-│   ├── experiments/             # 实验脚本
-│   └── results/                 # 实验结果
-└── README.md                    # 项目说明
+│   ├── data/                    # 数据目录
+│   └── outputs/                 # 输出结果
+└── [其他算法]/                   # 其他算法子项目（待创建）
 ```
 
 ## 开发流程
@@ -108,11 +168,45 @@ MLDLAlgorithmCode/
 
 ## 使用说明
 
-详细的工作流程和使用说明请参考 `docs/2-提示词-给出算法名称生成对应代码.md`
+### 快速开始
+
+```powershell
+# Step 0: 激活虚拟环境（必须）
+conda activate mldl_algo311
+
+# Step 1: 进入项目根目录
+cd MLDLAlgorithmCode
+
+# Step 2: 进入子项目目录（以 ml_knn 为例）
+cd ml_knn
+
+# Step 3: 安装子项目依赖
+pip install -r requirements.txt
+
+# Step 4: 运行子项目
+python main.py
+```
+
+详细的工作流程和使用说明请参考：
+- [工作流程文档](docs/2-提示词-给出算法名称生成对应代码.md)
+- [虚拟环境详细说明](docs/3-虚拟环境搭建.md)
 
 ## 项目状态
 
-🚧 项目处于初始化阶段，算法实现正在逐步进行中...
+### 已完成的算法
+
+| 算法 | 目录 | 分类 | 状态 | 实验数 | 说明 |
+|------|------|------|------|--------|------|
+| K-Nearest Neighbors | `ml_knn/` | ML | ✅ 完成 | 6 | K 值敏感性、距离度量、基线对照等 |
+
+### 进行中的算法
+
+🚧 项目处于初始化阶段，更多算法实现正在逐步进行中...
+
+### 快速访问
+
+- [KNN 算法项目](ml_knn/README.md)
+- [工作流程文档](docs/2-提示词-给出算法名称生成对应代码.md)
 
 ## License
 

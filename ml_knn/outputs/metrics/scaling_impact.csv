@@ -1,0 +1,4 @@
+scaling_method,test_accuracy
+none,0.8933333333333333
+standard,0.88
+minmax,0.8933333333333333
