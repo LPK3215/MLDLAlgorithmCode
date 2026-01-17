@@ -174,8 +174,7 @@ conda activate mldl_algo311
 
 ## 📚 相关文档
 
-- [完整 README](README.md)
-- [虚拟环境说明](ENVIRONMENT_NOTE.md)
+- [完整 README](../README.md)
 - [算法规格书](ALGO_SPEC.md)
 - [实现设计文档](IMPLEMENTATION_DESIGN.md)
 
